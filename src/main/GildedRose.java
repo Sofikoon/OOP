@@ -8,6 +8,6 @@ public class GildedRose {
     }
 
     public void updateQuality() {
-        items.updateAll();
+        items.updateAllItemsQuality();
     }
 }

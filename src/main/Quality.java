@@ -1,20 +1,25 @@
 package main;
+
 public class Quality {
-    private int value;
-    public Quality(int value) {
-        this.value = value;
+    private int qualityValue;
+
+    public Quality(int qualityValue) {
+        this.qualityValue = qualityValue;
     }
+
     public int getValue() {
-        return value;
+        return qualityValue;
     }
+
     public void increase() {
-        if (value < 50) {
-            value++;
+        if (qualityValue < 50) {
+            qualityValue++;
         }
     }
+
     public void decrease() {
-        if (value > 0) {
-            value--;
+        if (qualityValue > 0) {
+            qualityValue--;
         }
     }
 }
