@@ -1,13 +1,14 @@
 package main;
 
 public class GildedRose {
-    public final Items items;
+    public final ItemCollection itemCollection;
 
     public GildedRose(Item[] items) {
-        this.items = new Items(items);
+        this.itemCollection = new ItemCollection(items);
     }
 
     public void updateQuality() {
-        items.updateAllItemsQuality();
+        ItemUpdater itemUpdater = new ItemUpdater(itemCollection);
+        itemUpdater.updateAllItemsQuality();
     }
 }
