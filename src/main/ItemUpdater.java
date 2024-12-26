@@ -8,66 +8,59 @@ public class ItemUpdater {
     }
 
     public void updateQuality() {
-        if (isSpecialItem(item)) {
+        if (item.isSpecial()) {
             updateSpecialItemQuality();
-        } else {
-            updateRegularItemQuality();
+            return;
         }
-    }
-
-    private boolean isSpecialItem(Item item) {
-        String name = item.getItemName();
-        return name.equals("Aged Brie") || name.equals("Backstage passes to a TAFKAL80ETC concert");
+        updateRegularItemQuality();
     }
 
     private void updateRegularItemQuality() {
-        Quality itemQuality = item.getItemQuality();
-        itemQuality.decrease();
+        item.decreaseQuality();
 
-        if (!item.getItemName().equals("Sulfuras, Hand of Ragnaros")) {
-            item.getSellInDays().decrement();
+        if (!item.itemName.equals("Sulfuras, Hand of Ragnaros")) {
+            item.decrementSellIn();
         }
 
-        if (item.getSellInDays().getValue() < 0) {
+        if (item.attributes.sellInDays.isExpired()) {
             handleExpiredItemQuality();
         }
     }
 
     private void updateSpecialItemQuality() {
-        Quality itemQuality = item.getItemQuality();
-        itemQuality.increase();
+        item.increaseQuality();
 
-        if (item.getItemName().equals("Backstage passes to a TAFKAL80ETC concert")) {
+        if (item.itemName.equals("Backstage passes to a TAFKAL80ETC concert")) {
             increaseQualityForBackstagePass();
         }
     }
 
     private void increaseQualityForBackstagePass() {
-        SellIn sellInDays = item.getSellInDays();
+        int sellInDaysValue = item.getSellInDaysValue();
 
-        if (sellInDays.getValue() < 11) {
-            item.getItemQuality().increase();
+        if (sellInDaysValue < 11) {
+            item.increaseQuality();
         }
-        if (sellInDays.getValue() < 6) {
-            item.getItemQuality().increase();
+        if (sellInDaysValue < 6) {
+            item.increaseQuality();
         }
     }
 
     private void handleExpiredItemQuality() {
-        String itemName = item.getItemName();
+        String itemName = item.itemName;
 
         if (itemName.equals("Aged Brie")) {
-            item.getItemQuality().increase();
+            item.increaseQuality();
             return;
         }
 
         if (itemName.equals("Backstage passes to a TAFKAL80ETC concert")) {
-            item.getItemQuality().decrease();
+            item.decreaseQuality();
             return;
         }
 
-        if (item.getItemQuality().getValue() > 0 && !itemName.equals("Sulfuras, Hand of Ragnaros")) {
-            item.getItemQuality().decrease();
+        if (item.getItemQualityValue() > 0 && !itemName.equals("Sulfuras, Hand of Ragnaros")) {
+            item.decreaseQuality();
         }
     }
 }

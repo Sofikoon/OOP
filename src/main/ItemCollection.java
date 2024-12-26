@@ -1,10 +1,18 @@
 package main;
+
 public class ItemCollection {
-    private final Item[] itemList;
+    final Item[] itemList;
+
     public ItemCollection(Item[] itemList) {
         this.itemList = itemList;
     }
-    public Item[] getItems() {
+
+    public void updateAllItemsQuality() {
+        for (Item item : itemList) {
+            item.updateQuality();
+        }
+    }
+    public Item[] itemList() {
         return itemList;
     }
 }

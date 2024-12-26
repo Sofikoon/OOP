@@ -7,10 +7,6 @@ public class Quality {
         this.qualityValue = qualityValue;
     }
 
-    public int getValue() {
-        return qualityValue;
-    }
-
     public void increase() {
         if (qualityValue < 50) {
             qualityValue++;
@@ -21,5 +17,8 @@ public class Quality {
         if (qualityValue > 0) {
             qualityValue--;
         }
+    }
+    public int getValue() {
+        return qualityValue;
     }
 }

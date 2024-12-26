@@ -7,11 +7,13 @@ public class SellIn {
         this.daysRemaining = daysRemaining;
     }
 
-    public int getValue() {
-        return daysRemaining;
-    }
-
     public void decrement() {
         daysRemaining--;
+    }
+    public boolean isExpired() {
+        return daysRemaining < 0;
+    }
+    public int getValue() {
+        return daysRemaining;
     }
 }

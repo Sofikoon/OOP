@@ -38,5 +38,4 @@ public class TexttestFixture {
             app.updateQuality();
         }
     }
-
 }

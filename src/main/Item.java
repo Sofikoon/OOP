@@ -1,28 +1,47 @@
 package main;
 
 public class Item {
-    private final String itemName;
-    private final ItemAttributes attributes;
+    final String itemName;
+    final ItemAttributes attributes;
 
     public Item(String itemName, SellIn sellInDays, Quality itemQuality) {
         this.itemName = itemName;
         this.attributes = new ItemAttributes(sellInDays, itemQuality);
     }
 
-    public String getItemName() {
+    public void updateQuality() {
+        ItemUpdater itemUpdater = new ItemUpdater(this);
+        itemUpdater.updateQuality();
+    }
+    public void decrementSellIn() {
+        attributes.decrementSellIn();
+    }
+    public void increaseQuality() {
+        attributes.increaseQuality();
+    }
+    public void decreaseQuality() {
+        attributes.decreaseQuality();
+    }
+
+    public boolean isSpecial() {
+        return itemName.equals("Aged Brie") || itemName.equals("Backstage passes to a TAFKAL80ETC concert");
+    }
+
+    public String describe() {
+        return itemName + ", " + attributes.getSellInDaysValue() + ", " + attributes.getItemQualityValue();
+    }
+    public int getSellInDaysValue() {
+        return attributes.getSellInDaysValue();
+    }
+    public int getItemQualityValue() {
+        return attributes.getItemQualityValue();
+    }
+    public String itemName() {
         return itemName;
-    }
-
-    public SellIn getSellInDays() {
-        return attributes.getSellInDays();
-    }
-
-    public Quality getItemQuality() {
-        return attributes.getItemQuality();
     }
 
     @Override
     public String toString() {
-        return itemName + ", " + attributes.getSellInDays().getValue() + ", " + attributes.getItemQuality().getValue();
+        return itemName + ", " + attributes.getSellInDaysValue() + ", " + attributes.getItemQualityValue();
     }
 }

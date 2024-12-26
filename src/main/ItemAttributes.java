@@ -1,15 +1,28 @@
 package main;
+
 public class ItemAttributes {
-    private final SellIn sellInDays;
+    final SellIn sellInDays;
     private final Quality itemQuality;
+
     public ItemAttributes(SellIn sellInDays, Quality itemQuality) {
         this.sellInDays = sellInDays;
         this.itemQuality = itemQuality;
     }
-    public SellIn getSellInDays() {
-        return sellInDays;
+
+    public void decrementSellIn() {
+        sellInDays.decrement();
     }
-    public Quality getItemQuality() {
-        return itemQuality;
+
+    public void increaseQuality() {
+        itemQuality.increase();
+    }
+    public void decreaseQuality() {
+        itemQuality.decrease();
+    }
+    public int getSellInDaysValue() {
+        return sellInDays.getValue();
+    }
+    public int getItemQualityValue() {
+        return itemQuality.getValue();
     }
 }
