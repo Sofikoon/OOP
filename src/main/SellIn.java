@@ -10,9 +10,11 @@ public class SellIn {
     public void decrement() {
         daysRemaining--;
     }
+
     public boolean isExpired() {
         return daysRemaining < 0;
     }
+
     public int getValue() {
         return daysRemaining;
     }

@@ -13,12 +13,15 @@ public class Item {
         ItemUpdater itemUpdater = new ItemUpdater(this);
         itemUpdater.updateQuality();
     }
+
     public void decrementSellIn() {
         attributes.decrementSellIn();
     }
+
     public void increaseQuality() {
         attributes.increaseQuality();
     }
+
     public void decreaseQuality() {
         attributes.decreaseQuality();
     }
@@ -30,12 +33,15 @@ public class Item {
     public String describe() {
         return itemName + ", " + attributes.getSellInDaysValue() + ", " + attributes.getItemQualityValue();
     }
+
     public int getSellInDaysValue() {
         return attributes.getSellInDaysValue();
     }
+
     public int getItemQualityValue() {
         return attributes.getItemQualityValue();
     }
+
     public String itemName() {
         return itemName;
     }

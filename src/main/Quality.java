@@ -18,6 +18,7 @@ public class Quality {
             qualityValue--;
         }
     }
+
     public int getValue() {
         return qualityValue;
     }

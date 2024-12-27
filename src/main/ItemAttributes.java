@@ -16,12 +16,15 @@ public class ItemAttributes {
     public void increaseQuality() {
         itemQuality.increase();
     }
+
     public void decreaseQuality() {
         itemQuality.decrease();
     }
+
     public int getSellInDaysValue() {
         return sellInDays.getValue();
     }
+
     public int getItemQualityValue() {
         return itemQuality.getValue();
     }

@@ -12,6 +12,7 @@ public class ItemCollection {
             item.updateQuality();
         }
     }
+
     public Item[] itemList() {
         return itemList;
     }
